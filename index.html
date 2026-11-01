@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salary to Hourly Calculator — Overtime FLSA Rate & Paycheck Conversion</title>
+<meta name="description" content="Convert your annual salary to an exact hourly rate, bi-weekly paycheck, and overtime wage (1.5x FLSA rate). Includes FICA tax estimates and holiday pay.">
+<link rel="canonical" href="https://sebiglesias.com.ar/salary-to-hourly/">
+<meta name="theme-color" content="#22c55e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2BNDBQP0W7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2BNDBQP0W7');
+</script>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Salary to Hourly Calculator — Overtime FLSA Rate & Paycheck Conversion">
+<meta property="og:description" content="Convert your annual salary to an exact hourly rate, bi-weekly paycheck, and overtime wage (1.5x FLSA rate). Includes FICA tax estimates and holiday pay.">
+<meta property="og:url" content="https://sebiglesias.com.ar/salary-to-hourly/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Salary to Hourly Calculator — Overtime FLSA Rate & Paycheck Conversion">
+<meta name="twitter:description" content="Convert your annual salary to an exact hourly rate, bi-weekly paycheck, and overtime wage (1.5x FLSA rate). Includes FICA tax estimates and holiday pay.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<meta name="google-adsense-account" content="ca-pub-3381238987477190">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Salary to Hourly Calculator \u2014 Overtime FLSA Rate & Paycheck Conversion",
+    "description": "Convert your annual salary to an exact hourly rate, bi-weekly paycheck, and overtime wage (1.5x FLSA rate). Includes FICA tax estimates and holiday pay.",
+    "url": "https://sebiglesias.com.ar/salary-to-hourly/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many work hours are in a year for a 40-hour work week?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There are 2,080 standard work hours in a 52-week calendar year (40 hours \u00d7 52 weeks = 2,080 hours). Divide your annual salary by 2,080 to find your exact unadjusted base hourly wage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Fair Labor Standards Act (FLSA) overtime rule?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under federal FLSA rules, non-exempt hourly and salaried employees who work more than 40 hours in a single 7-day workweek must receive overtime pay at a rate not less than 1.5 times their regular hourly rate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What deductions come out of a gross paycheck?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every US worker pays 7.65% in mandatory FICA taxes (6.2% Social Security up to the wage base cap and 1.45% Medicare with no cap). Additionally, federal income tax withholding, state income tax (0% in FL, TX, WA, NV, TN, WY, AK, SD, NH), and health insurance/401(k) contributions are deducted."
+        }
+      }
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<div class="container">
+  
+    <header>
+      <span class="badge">Career & Compensation</span>
+      <h1>Salary to Hourly Calculator</h1>
+      <p class="subtitle">Convert an annual salary to its exact hourly wage, overtime pay, and bi-weekly take-home estimate under standard 40-hour workweeks.</p>
+    </header>
+    <div class="grid">
+      <div class="card">
+        <h2>Salary & Work Schedule</h2>
+        <div class="form-group">
+          <label for="salary">Annual Salary <span>USD</span></label>
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+            <input type="number" id="salary" class="has-prefix" value="75000" min="10000" max="1000000" step="1000">
+          </div>
+          <input type="range" id="salaryRange" min="25000" max="200000" step="1000" value="75000">
+        </div>
+        <div class="form-group">
+          <label for="hoursPerWk">Hours Worked Per Week <span>Hours</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="hoursPerWk" class="has-suffix" value="40" min="10" max="80" step="1">
+            <span class="input-suffix">hrs</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="paidWeeks">Paid Weeks Per Year <span>Weeks</span></label>
+          <select id="paidWeeks">
+            <option value="52" selected>52 weeks (Standard full-time with paid PTO)</option>
+            <option value="50">50 weeks (2 weeks unpaid vacation)</option>
+            <option value="48">48 weeks (4 weeks unpaid time off)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="overtimeHrs">Expected Weekly Overtime <span>Hours</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="overtimeHrs" class="has-suffix" value="5" min="0" max="40" step="1">
+            <span class="input-suffix">hrs</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Paycheck Conversion Breakdown</h2>
+        <div class="kpi-grid">
+          <div class="kpi-card highlight">
+            <div class="kpi-label">Base Hourly Rate</div>
+            <div class="kpi-value accent" id="hourlyRate">$36.06/hr</div>
+          </div>
+          <div class="kpi-card highlight">
+            <div class="kpi-label">Overtime Rate (1.5x)</div>
+            <div class="kpi-value green" id="otRate">$54.09/hr</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Bi-Weekly Paycheck</div>
+            <div class="kpi-value" id="biweeklyGross">$2,885</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Monthly Gross</div>
+            <div class="kpi-value" id="monthlyGross">$6,250</div>
+          </div>
+        </div>
+        <div id="salarySummary" style="background: var(--bg-card-inner); padding: 1rem; border-radius: var(--radius-md); font-size: 0.88rem; line-height: 1.5; color: var(--text-muted);">
+          Calculating...
+        </div>
+      </div>
+    </div>
+    
+
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    
+        <div class="faq-item">
+          <h3>How many work hours are in a year for a 40-hour work week?</h3>
+          <p>There are 2,080 standard work hours in a 52-week calendar year (40 hours × 52 weeks = 2,080 hours). Divide your annual salary by 2,080 to find your exact unadjusted base hourly wage.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What is the Fair Labor Standards Act (FLSA) overtime rule?</h3>
+          <p>Under federal FLSA rules, non-exempt hourly and salaried employees who work more than 40 hours in a single 7-day workweek must receive overtime pay at a rate not less than 1.5 times their regular hourly rate.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What deductions come out of a gross paycheck?</h3>
+          <p>Every US worker pays 7.65% in mandatory FICA taxes (6.2% Social Security up to the wage base cap and 1.45% Medicare with no cap). Additionally, federal income tax withholding, state income tax (0% in FL, TX, WA, NV, TN, WY, AK, SD, NH), and health insurance/401(k) contributions are deducted.</p>
+        </div>
+  </section>
+
+  <div class="cross-links">
+    <a href="https://sebiglesias.com.ar/car-payoff-calculator/">🚗 Car Payoff</a>
+    <a href="https://sebiglesias.com.ar/credit-card-payoff/">💳 Credit Card Payoff</a>
+    <a href="https://sebiglesias.com.ar/insurance-deductible/">🛡️ Insurance Deductible</a>
+    <a href="https://sebiglesias.com.ar/rent-vs-buy-calculator/">🏡 Rent vs Buy</a>
+    <a href="https://sebiglesias.com.ar/concrete-calculator/">🧱 Concrete Calculator</a>
+    <a href="https://sebiglesias.com.ar/moving-truck-calculator/">📦 Moving Truck</a>
+    <a href="https://sebiglesias.com.ar/ac-btu-calculator/">❄️ AC BTU Sizing</a>
+    <a href="https://sebiglesias.com.ar/mulch-calculator/">🌱 Mulch Calculator</a>
+    <a href="https://sebiglesias.com.ar/salary-to-hourly/">💼 Salary to Hourly</a>
+    <a href="https://sebiglesias.com.ar/paint-calculator/">🎨 Paint Calculator</a>
+  </div>
+
+  <footer>
+    <p>© 2026 Free Web Utility. Created by <a href="https://sebiglesias.com.ar">Sebastián Iglesias</a>. Free & Fast.</p>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

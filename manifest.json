@@ -1,0 +1,15 @@
+{
+  "name": "Salary to Hourly Calculator \u2014 Overtime FLSA Rate & Paycheck Conversion",
+  "short_name": "salary-to-hourly",
+  "start_url": "https://sebiglesias.com.ar/salary-to-hourly/",
+  "display": "standalone",
+  "background_color": "#0e0d0b",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
