@@ -6,6 +6,17 @@
 <title>Salary to Hourly Calculator — Overtime FLSA Rate & Paycheck Conversion</title>
 <meta name="description" content="Convert your annual salary to an exact hourly rate, bi-weekly paycheck, and overtime wage (1.5x FLSA rate). Includes FICA tax estimates and holiday pay.">
 <link rel="canonical" href="https://sebiglesias.com.ar/salary-to-hourly/">
+  <link rel="alternate" hreflang="en" href="https://sebiglesias.com.ar/salary-to-hourly/">
+  <link rel="alternate" hreflang="es" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=es">
+  <link rel="alternate" hreflang="de" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=de">
+  <link rel="alternate" hreflang="fr" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=fr">
+  <link rel="alternate" hreflang="it" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=it">
+  <link rel="alternate" hreflang="pt" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=pt">
+  <link rel="alternate" hreflang="nl" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=nl">
+  <link rel="alternate" hreflang="sv" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=sv">
+  <link rel="alternate" hreflang="da" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=da">
+  <link rel="alternate" hreflang="pl" href="https://sebiglesias.com.ar/salary-to-hourly/?lang=pl">
+  <link rel="alternate" hreflang="x-default" href="https://sebiglesias.com.ar/salary-to-hourly/">
 <meta name="theme-color" content="#22c55e">
 <meta name="robots" content="index, follow, max-image-preview:large">
 
@@ -89,6 +100,18 @@
 <div class="container">
   
     <header>
+<div style='display:flex;justify-content:flex-end;margin-bottom:.5rem'><select id="lang-select" aria-label="Language" style="background:#24221C;border:1px solid rgba(242,239,230,.18);color:#F2EFE6;font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:3px 6px;border-radius:3px;cursor:pointer;margin-left:auto">
+  <option value="en">🇺🇸 EN</option>
+  <option value="es">🇪🇸 ES</option>
+  <option value="de">🇩🇪 DE</option>
+  <option value="fr">🇫🇷 FR</option>
+  <option value="it">🇮🇹 IT</option>
+  <option value="pt">🇵🇹 PT</option>
+  <option value="nl">🇳🇱 NL</option>
+  <option value="sv">🇸🇪 SV</option>
+  <option value="da">🇩🇰 DA</option>
+  <option value="pl">🇵🇱 PL</option>
+</select></div>
       <span class="badge">Career & Compensation</span>
       <h1>Salary to Hourly Calculator</h1>
       <p class="subtitle">Convert an annual salary to its exact hourly wage, overtime pay, and bi-weekly take-home estimate under standard 40-hour workweeks.</p>
@@ -219,5 +242,41 @@
 </div>
 
 <script src="app.js"></script>
+
+<script>
+/* I18N_AUTO_ENGINE */
+(function(){
+  const DICT = {"en": {"title": "Salary to Hourly & Overtime Calculator<span class='accent'>.</span>", "sub": "Convert annual salary to hourly, weekly, biweekly & 1.5x FLSA overtime"}, "es": {"title": "Conversor Sueldo Anual a Valor Hora<span class='accent'>.</span>", "sub": "Equivalencia por hora, semana, quincena y recargo de horas extras (1.5x/2x)"}, "de": {"title": "Jahresgehalt in Stundenlohn Rechner<span class='accent'>.</span>", "sub": "Monatsgehalt, Wochenlohn und Überstundenzuschlag präzise umrechnen"}, "fr": {"title": "Convertisseur Salaire Annuel en Taux Horaire<span class='accent'>.</span>", "sub": "Revenu mensuel, hebdomadaire, journalier et majoration heures supplémentaires"}, "it": {"title": "Convertitore Stipendio Annuo in Paga Oraria<span class='accent'>.</span>", "sub": "Calcolo compenso orario, settimanale, mensile e straordinari"}, "pt": {"title": "Conversor Salário Mensal/Anual para Valor Hora<span class='accent'>.</span>", "sub": "Valor da hora trabalhada, semanal e adicional de horas extras"}, "nl": {"title": "Jaarsalaris naar Uurloon Calculator<span class='accent'>.</span>", "sub": "Reken bruto jaar- of maandsalaris om naar uurloon en overwerktoeslag"}, "sv": {"title": "Årslön & Månadslön till Timlön Kalkylator<span class='accent'>.</span>", "sub": "Räkna om fast lön till timlön, veckolön och övertidsersättning"}, "da": {"title": "Årsløn & Månedsløn til Timeløn Beregner<span class='accent'>.</span>", "sub": "Konverter fast løn til timesats, ugeløn og overtidsbetaling"}, "pl": {"title": "Przelicznik Wynagrodzenia na Stawkę Godzinową<span class='accent'>.</span>", "sub": "Oblicz stawkę za godzinę, tydzień oraz dodatek za nadgodziny"}};
+  const h1El = document.querySelector('h1');
+  const subEl = document.querySelector('.sub') || document.querySelector('header p');
+  const selEl = document.getElementById('lang-select');
+  function applyLang(lang) {
+    const entry = DICT[lang] || DICT.en;
+    document.documentElement.lang = lang;
+    if (h1El && entry.title) h1El.innerHTML = entry.title;
+    if (subEl && entry.sub) subEl.textContent = entry.sub;
+    if (lang !== 'en' && entry.sub) {
+      document.title = (h1El ? h1El.textContent : '') + ' — ' + entry.sub;
+    }
+  }
+  const params = new URLSearchParams(window.location.search);
+  const init = params.get('lang') || localStorage.getItem('salary-to-hourly-lang') || 'en';
+  const valid = DICT[init] ? init : 'en';
+  if (selEl) {
+    selEl.value = valid;
+    selEl.addEventListener('change', function(e) {
+      const nl = e.target.value;
+      localStorage.setItem('salary-to-hourly-lang', nl);
+      const u = new URL(window.location.href);
+      if (nl === 'en') u.searchParams.delete('lang');
+      else u.searchParams.set('lang', nl);
+      window.history.replaceState({}, '', u);
+      applyLang(nl);
+    });
+  }
+  applyLang(valid);
+})();
+</script>
+
 </body>
 </html>
